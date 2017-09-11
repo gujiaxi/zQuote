@@ -47,9 +47,10 @@ int draw_text(cairo_t *cr, struct text_content ct, int *region_width, int *regio
         layout_stylize(layout, ct.title, "Sans", TITLE_RESIZE, 1, title_width, title_height);
         cairo_set_source_rgb(cr, 0.3, 0.3, 0.3);
         pango_cairo_show_layout(cr, layout);
+        *title_height += GAP_SIZE * PANGO_SCALE;
         // --- author
         if (ct.author) {
-            cairo_move_to(cr, 0, *body_height / PANGO_SCALE + GAP_SIZE + *title_height / PANGO_SCALE);
+            cairo_move_to(cr, 0, *body_height / PANGO_SCALE + *title_height / PANGO_SCALE);
             layout_stylize(layout, ct.author, "Sans", AUTHOR_RESIZE, 0, author_width, author_height);
             cairo_set_source_rgb(cr, 0.5, 0.5, 0.5);
             pango_cairo_show_layout(cr, layout);
@@ -57,7 +58,7 @@ int draw_text(cairo_t *cr, struct text_content ct, int *region_width, int *regio
     }
 
     *region_width = *body_width;
-    *region_height = *body_height + *title_height + *author_height + GAP_SIZE * PANGO_SCALE;
+    *region_height = *body_height + *title_height + *author_height;
 
     g_object_unref(layout);
 

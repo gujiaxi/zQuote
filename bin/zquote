@@ -1,0 +1,7 @@
+#!/usr/bin/env sh
+
+DIR=$(dirname $0)
+echo $DIR
+
+export DYLD_LIBRARY_PATH=$DIR/../lib
+$DIR/_zquote "$@"
