@@ -24,6 +24,4 @@ Options:
 
 ![preview-zh](./img/preview-zh.png)
 
------
-
 ![preview-en](./img/preview-en.png)
