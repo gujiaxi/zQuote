@@ -2,9 +2,9 @@ CC      = cc
 CFLAGS  = -O2 -Wall
 LDFLAGS = -L ../lib -lcairo -lpango -lpangocairo -lgobject
 LDFLAGS = `pkg-config --cflags --libs pango` \
-		  `pkg-config --cflags --libs cairo` \
-		  `pkg-config --cflags --libs pangocairo` \
-		  `pkg-config --cflags --libs glib-2.0`
+	  `pkg-config --cflags --libs cairo` \
+	  `pkg-config --cflags --libs pangocairo` \
+	  `pkg-config --cflags --libs glib-2.0`
 PREFIX  = /usr/local
 EXEC    = zquote
 
