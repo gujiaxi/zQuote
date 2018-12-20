@@ -3,8 +3,8 @@
 #define MARGIN_X        120
 #define MARGIN_Y        140
 #define GAP_SIZE        125
-#define TITLE_RESIZE    0.6
-#define AUTHOR_RESIZE   0.5
+#define TITLE_RESIZE    0.7
+#define AUTHOR_RESIZE   0.6
 
 struct text_content {
     char * body;
