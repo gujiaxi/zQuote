@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     char * body = NULL;
     char * title = NULL;
     char * author = NULL;
-    size_t size;
+    size_t size, ssize;
     while (1) {
         int option_index = 0;
         static struct option long_options[] = {
@@ -42,11 +42,17 @@ int main(int argc, char *argv[])
         switch (c) {
         case 'i':
             printf("BODY (Required):\n");
-            getline(&body, &size, stdin);
+            ssize = getline(&body, &size, stdin);
+            if (ssize != 1) body[ssize-1] = '\0';
+            else exit(-1);
             printf("TITLE (Optional):\n");
-            getline(&title, &size, stdin);
+            ssize = getline(&title, &size, stdin);
+            if (ssize != 1) title[ssize-1] = '\0';
+            else title = NULL;
             printf("AUTHOR (Optional):\n");
-            getline(&author, &size, stdin);
+            ssize = getline(&author, &size, stdin);
+            if (ssize != 1) author[ssize-1] = '\0';
+            else author = NULL;
             break;
         case 'b':
             body = optarg;
