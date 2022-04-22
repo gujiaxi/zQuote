@@ -15,6 +15,7 @@ A CLI tool for making fancy quotation card.
 Usage:
     zquote -b BODY [options]
 Options:
+    -i, --interactive       Enter interactive mode.
     -b, --body BODY         Specify quote body.
     -t, --title TITLE       Specify quote title.
     -a, --author AUTHOR     Specify quote author.

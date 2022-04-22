@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+#include <string.h>
 #include <pango/pangocairo.h>
 
 #include "qcard.h"
@@ -70,6 +72,12 @@ void make_quote_img(char * body, char * title, char * author) {
     cairo_surface_t *virtual_surface;
     cairo_surface_t *image_surface;
 
+    time_t timestamp_second;
+    time(&timestamp_second);
+    char output_file[16];
+    sprintf(output_file, "%ld", timestamp_second);
+    strcat(output_file, ".png");
+
     virtual_surface = cairo_recording_surface_create(CAIRO_CONTENT_COLOR_ALPHA, NULL);
     cr = cairo_create(virtual_surface);
     cairo_set_source_rgb(cr, 1.0, 1.0, 1.0);
@@ -85,7 +93,7 @@ void make_quote_img(char * body, char * title, char * author) {
     image_surface = cairo_surface_create_for_rectangle(virtual_surface, -MARGIN_X, -MARGIN_Y,
                                                        *region_width / PANGO_SCALE + 2*MARGIN_X,
                                                        *region_height / PANGO_SCALE + 2*MARGIN_Y);
-    cairo_surface_write_to_png(image_surface, "output.png");
+    cairo_surface_write_to_png(image_surface, output_file);
     
     // clean envs
     cairo_destroy(cr);
